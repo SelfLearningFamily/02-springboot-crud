@@ -23,7 +23,9 @@ public class CruddemoApplication {
 			//addStudentToSystem(studentDao);
 			//findStudentById(studentDao);
 			//findStudentsByLastName(studentDao);
-			getAllStudents(studentDao);
+			//getAllStudents(studentDao);
+			//updateStudent(studentDao);
+			updateStudentEmailByLastName(studentDao);
 		};
 	}
 
@@ -68,5 +70,29 @@ public class CruddemoApplication {
 		else {
 			System.out.println("there is no student in the database right now!");
 		}
+	}
+
+	private void updateStudent(StudentDao studentDao){
+		System.out.println("updating a student with id 2");
+		Student requiredStudent = studentDao.findbyId(2);
+		Student newStd =  new Student("Daffy","Duck","daffy.duck@gmail.com");
+		//requiredStudent = studentDao.findbyId(2);
+		requiredStudent = newStd;
+		if(requiredStudent != null) {
+			requiredStudent.setFirstName("Scobby");
+			studentDao.update(requiredStudent);
+			System.out.println("record update successfully");
+		}else{
+			System.out.println("unable to find the required student");
+		}
+	}
+
+	private void updateStudentEmailByLastName(StudentDao studentDao){
+		System.out.println("updating all students email whose last name is doe");
+		int noOfRows = studentDao.multipleEmailUpdateByQuery("scobbydobby@do.com","doe");
+		if(noOfRows > 0)
+			System.out.println("Update Successfully, " + noOfRows + " rows affected");
+		else
+			System.out.println("did not find any record that matches the required creteria");
 	}
 }

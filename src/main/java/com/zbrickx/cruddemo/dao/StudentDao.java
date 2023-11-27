@@ -9,5 +9,7 @@ public interface StudentDao {
     Student findbyId(Integer id);
     List<Student> findByLastName(String lastName);
     List<Student> findAll();
+    void update(Student updatedStudent);
+    int multipleEmailUpdateByQuery(String email, String byLastName);
 
 }
