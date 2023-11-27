@@ -11,5 +11,7 @@ public interface StudentDao {
     List<Student> findAll();
     void update(Student updatedStudent);
     int multipleEmailUpdateByQuery(String email, String byLastName);
+    void deleteRecord(Integer studentId);
+    int deleteAll();
 
 }

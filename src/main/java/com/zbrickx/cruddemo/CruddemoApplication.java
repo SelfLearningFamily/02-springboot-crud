@@ -25,7 +25,9 @@ public class CruddemoApplication {
 			//findStudentsByLastName(studentDao);
 			//getAllStudents(studentDao);
 			//updateStudent(studentDao);
-			updateStudentEmailByLastName(studentDao);
+			//updateStudentEmailByLastName(studentDao);
+			//deleteStudent(studentDao);
+			deleteAllStudentRecords(studentDao);
 		};
 	}
 
@@ -94,5 +96,16 @@ public class CruddemoApplication {
 			System.out.println("Update Successfully, " + noOfRows + " rows affected");
 		else
 			System.out.println("did not find any record that matches the required creteria");
+	}
+
+	private void deleteStudent(StudentDao studentDao){
+		System.out.println("delete a student of id 5");
+		studentDao.deleteRecord(6);
+	}
+
+	private  void deleteAllStudentRecords(StudentDao studentDao){
+		System.out.println("deleting all the students");
+		int rowDeleted = studentDao.deleteAll();
+		System.out.println(rowDeleted + " rows deleted");
 	}
 }
